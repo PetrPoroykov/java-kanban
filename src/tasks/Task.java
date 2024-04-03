@@ -7,16 +7,16 @@ public class Task {
     private String title;
     private String description;
     private int id;
-    private String status;
+    private Status status;
 
-    public Task(String title, String description, int id, String status) {
+    public Task(String title, String description, int id, Status status) {
         this.title = title;
         this.description = description;
         this.id = id;
         this.status = status;
     }
 
-    public Task(String title, String description,  String status) {
+    public Task(String title, String description, Status status) {
         this.title = title;
         this.description = description;
         this.status = status;
@@ -34,7 +34,7 @@ public class Task {
         return id;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
@@ -50,7 +50,7 @@ public class Task {
         this.id = id;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -72,7 +72,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "ЗАДАЧА {" +
+        return "ЗАДАЧА  \n  {" +
                 "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", id=" + id +
