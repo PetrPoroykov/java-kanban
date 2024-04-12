@@ -4,16 +4,16 @@ import java.util.Objects;
 
 public class SubTask extends Task {
 
-    private int EpicId;
+    private int epicId;
 
-    public SubTask(String title, String description, int id, Status status, int EpicId) {
+    public SubTask(String title, String description, int id, Status status, int epicId) {
         super(title, description, id, status);
-        this.EpicId = EpicId;
+        this.epicId = epicId;
     }
 
 
     public int getEpicId() {
-        return EpicId;
+        return epicId;
     }
 
     @Override
@@ -22,18 +22,18 @@ public class SubTask extends Task {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         SubTask subTask = (SubTask) o;
-        return EpicId == subTask.EpicId;
+        return epicId == subTask.epicId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), EpicId);
+        return Objects.hash(super.hashCode(), epicId);
     }
 
     @Override
     public String toString() {
 
-        return super.toString() + " НОМЕР EPIC: " + EpicId;
+        return super.toString() + " НОМЕР EPIC: " + epicId;
     }
 }
 
