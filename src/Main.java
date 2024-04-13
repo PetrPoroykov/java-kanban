@@ -11,7 +11,6 @@ public class Main {
         System.out.println("Поехали!");
 
         Managers managers = new Managers();
-
         TaskManager inMemoryTaskManager = managers.getDefault();
 
         Task task = new Task("ЗАДАЧА 1", "Просто задача один", Status.NEW);
@@ -104,6 +103,10 @@ public class Main {
         inMemoryTaskManager.getSubTask(10);
         inMemoryTaskManager.getSubTask(11);
         inMemoryTaskManager.getSubTask(12);
+        inMemoryTaskManager.getTask(0);
+        inMemoryTaskManager.getTask(2);
+        inMemoryTaskManager.getEpic(3);
+        inMemoryTaskManager.getEpic(6);
         System.out.println(inMemoryTaskManager.getHistory());
 
         inMemoryTaskManager.deleteAllSubtask();

@@ -7,21 +7,28 @@ import java.util.List;
 
 public class InMemoryHistoryManager implements HistoryManager {
 
-    public List<Task> lastTasks = new ArrayList<>();
+    private List<Task> lastViewedTasks = new ArrayList<>();
 
-    @Override
-    public List<Task> getHistory() {
-        return lastTasks;
+    public List<Task> getLastViewedTasks() {
+        return lastViewedTasks;
     }
 
     @Override
-    public List<Task> addView(Task task) {
+    public List<Task> getHistory() {
+        return getLastViewedTasks();
+    }
+
+    @Override
+    public List<Task> add(Task task) {
         if (task != null) {
-            lastTasks.add(task);
-            if (lastTasks.size() > 10) {
-                lastTasks.remove(0);
+            if (lastViewedTasks.contains(task)) {
+                lastViewedTasks.remove(task);
+            }
+            lastViewedTasks.add(task);
+            if (lastViewedTasks.size() > 10) {
+                lastViewedTasks.remove(0);
             }
         }
-        return lastTasks;
+        return lastViewedTasks;
     }
 }

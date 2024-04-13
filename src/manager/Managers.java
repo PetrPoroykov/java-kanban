@@ -1,14 +1,13 @@
 package manager;
 
-public  class Managers {
+public class Managers {
 
-    public  TaskManager getDefault() {
-        InMemoryTaskManager inMemoryTaskManager = new InMemoryTaskManager();
+    public TaskManager getDefault() {
+        InMemoryTaskManager inMemoryTaskManager = new InMemoryTaskManager(getDefaultHistory());
         return inMemoryTaskManager;
     }
 
-    public  HistoryManager getDefaultHistory(){
-        InMemoryHistoryManager inMemoryHistoryManager = new InMemoryHistoryManager();
-        return  inMemoryHistoryManager;
+    public HistoryManager getDefaultHistory() {
+        return new InMemoryHistoryManager();
     }
 }

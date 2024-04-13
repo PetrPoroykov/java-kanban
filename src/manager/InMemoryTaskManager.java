@@ -8,16 +8,19 @@ import tasks.Task;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class InMemoryTaskManager implements TaskManager {
     private int nextId = 0;
-    private HashMap<Integer, Task> tasks = new HashMap<>();
-    private HashMap<Integer, SubTask> subTasks = new HashMap<>();
-    private HashMap<Integer, Epic> epics = new HashMap<>();
+    private Map<Integer, Task> tasks = new HashMap<>();
+    private Map<Integer, SubTask> subTasks = new HashMap<>();
+    private Map<Integer, Epic> epics = new HashMap<>();
 
-    Managers managers = new Managers();
+    HistoryManager inMemoryHistoryManager;
 
-    HistoryManager inMemoryHistoryManager = managers.getDefaultHistory();
+    public InMemoryTaskManager(HistoryManager inMemoryHistoryManager) {
+        this.inMemoryHistoryManager = inMemoryHistoryManager;
+    }
 
     @Override
     public Task createTask(Task task) { // Создание Task
@@ -171,19 +174,19 @@ public class InMemoryTaskManager implements TaskManager {
 
     public Task getTask(int id) {
         Task task = tasks.get(id);
-        inMemoryHistoryManager.addView(task);
+        inMemoryHistoryManager.add(task);
         return task;
     }
 
     public SubTask getSubTask(int id) {
         SubTask subTask = subTasks.get(id);
-        inMemoryHistoryManager.addView(subTask);
+        inMemoryHistoryManager.add(subTask);
         return subTask;
     }
 
-    public Epic getEpic (int id) {
+    public Epic getEpic(int id) {
         Epic epic = epics.get(id);
-        inMemoryHistoryManager.addView(epic);
+        inMemoryHistoryManager.add(epic);
         return epic;
     }
 }
