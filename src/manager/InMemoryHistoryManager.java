@@ -3,19 +3,20 @@ package manager;
 import tasks.Task;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class InMemoryHistoryManager implements HistoryManager {
 
     private List<Task> lastViewedTasks = new ArrayList<>();
 
-    public List<Task> getLastViewedTasks() {
-        return lastViewedTasks;
-    }
-
     @Override
     public List<Task> getHistory() {
-        return getLastViewedTasks();
+        List trantransitList = new ArrayList();
+        for (Task lastViewedTask : lastViewedTasks) {
+            trantransitList.add(lastViewedTask);
+        }
+        return trantransitList;
     }
 
     @Override

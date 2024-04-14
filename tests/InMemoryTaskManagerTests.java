@@ -111,8 +111,8 @@ public class InMemoryTaskManagerTests {
         inMemoryTaskManager.createTask(task);
         Task task2 = new Task("ЗАДАЧА 2", "Просто задача два", Status.NEW);
         inMemoryTaskManager.createTask(task2);
-        List<Task> history = inMemoryTaskManager.getHistory();
         inMemoryTaskManager.getTask(1);
+        List<Task> history = inMemoryTaskManager.getHistory();
         assertEquals(1, history.size(), "Размер истории неверный");
     }
 }
