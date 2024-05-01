@@ -18,8 +18,8 @@ public class InMemoryTaskManager implements TaskManager {
 
     HistoryManager inMemoryHistoryManager;
 
-    public InMemoryTaskManager(HistoryManager inMemoryHistoryManager) {
-        this.inMemoryHistoryManager = inMemoryHistoryManager;
+    public InMemoryTaskManager(HistoryManager historyManager) {
+        this.inMemoryHistoryManager = historyManager;
     }
 
     @Override

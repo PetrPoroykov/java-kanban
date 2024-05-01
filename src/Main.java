@@ -10,8 +10,8 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Поехали!");
 
-        Managers managers = new Managers();
-        TaskManager inMemoryTaskManager = managers.getDefault();
+
+        TaskManager inMemoryTaskManager = Managers.getDefault();
 
         Task task = new Task("ЗАДАЧА 1", "Просто задача один", Status.NEW);
         inMemoryTaskManager.createTask(task);
