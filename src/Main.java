@@ -91,7 +91,8 @@ public class Main {
         System.out.println(inMemoryTaskManager.getAllSubtask());
 
 
-        System.out.println("История просмотров. Последнии 10 просмотренных задач");
+        System.out.println("История просмотров.");
+        System.out.println("Размер списка просмотренных задач= " + inMemoryTaskManager.getHistory().size());
         inMemoryTaskManager.getTask(0);
         inMemoryTaskManager.getTask(2);
         inMemoryTaskManager.getEpic(3);
@@ -107,6 +108,21 @@ public class Main {
         inMemoryTaskManager.getTask(2);
         inMemoryTaskManager.getEpic(3);
         inMemoryTaskManager.getEpic(6);
+        System.out.println(inMemoryTaskManager.getHistory());
+
+        inMemoryTaskManager.getSubTask(11);
+        inMemoryTaskManager.getTask(2);
+        inMemoryTaskManager.getEpic(4);
+
+        System.out.println("Повторно посмотрели подзадачу id 11, задачу id 2, эпик id 4 ");
+        System.out.println("История просмотров.");
+        System.out.println("Размер списка просмотренных задач= " + inMemoryTaskManager.getHistory().size());
+        System.out.println(inMemoryTaskManager.getHistory());
+        System.out.println("Удалили  задачу id 2 и сборная задача id 6 (подзадачи id 10, 11, 12)");
+        System.out.println("История просмотров.");
+        inMemoryTaskManager.deleteTaskById(2);
+        inMemoryTaskManager.deleteEpicById(6);
+        System.out.println("Размер списка просмотренных задач= " + inMemoryTaskManager.getHistory().size());
         System.out.println(inMemoryTaskManager.getHistory());
 
         inMemoryTaskManager.deleteAllSubtask();
