@@ -73,7 +73,8 @@ public class Task {
     @Override
     public String toString() {
         return "ЗАДАЧА  \n  {" +
-                "title='" + title + '\'' +
+                "ID=" + id +
+                " title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", id=" + id +
                 ", status='" + status + '\'' +

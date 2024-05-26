@@ -100,17 +100,29 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void deleteAllTask() { // удаление всех Task
+        for (Integer id : tasks.keySet()) {
+            inMemoryHistoryManager.removeView(id);
+        }
         tasks.clear();
     }
 
     @Override
     public void deleteAllEpic() { // удаление всех Epic
+        for (Integer id : epics.keySet()) {
+            inMemoryHistoryManager.removeView(id);
+        }
+        for (Integer id : subTasks.keySet()) {
+            inMemoryHistoryManager.removeView(id);
+        }
         epics.clear();
         subTasks.clear();
     }
 
     @Override
     public void deleteAllSubtask() { // удаление всех SubTask
+        for (Integer id : subTasks.keySet()) {
+            inMemoryHistoryManager.removeView(id);
+        }
         for (SubTask subTask : subTasks.values()) {
             ArrayList<Integer> emptySubTaskIds = new ArrayList<>();
             epics.get(subTask.getEpicId()).setSubTaskIds(emptySubTaskIds);
@@ -121,11 +133,13 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void deleteTaskById(int id) { // удаление Task по номеру
+        inMemoryHistoryManager.removeView(id);
         tasks.remove(id);
     }
 
     @Override
     public void deleteSubTaskById(Integer id) { // удаление SubTask  по номеру
+        inMemoryHistoryManager.removeView(id);
         SubTask subTask = subTasks.get(id);
         Epic epic = epics.get(subTask.getEpicId());
         subTasks.remove(id);
@@ -135,11 +149,13 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public void deleteEpicById(int id) { // удаление  Epic по номеру
+        inMemoryHistoryManager.removeView(id);
         Epic epic = epics.get(id);
         ArrayList<Integer> listSubTaskId = epic.getSubTaskIds();
         epics.remove(id);
         for (int i = 0; i < listSubTaskId.size(); i++) {
             subTasks.remove(listSubTaskId.get(i));
+            inMemoryHistoryManager.removeView(listSubTaskId.get(i));
         }
     }
 

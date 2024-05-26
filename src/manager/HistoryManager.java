@@ -7,5 +7,7 @@ import java.util.List;
 public interface HistoryManager {
     List<Task> getHistory();
 
-    List<Task> add(Task task);
+    void add(Task task);
+
+    void removeView(int id);
 }
