@@ -5,12 +5,14 @@ import java.util.Objects;
 
 public class Task {
     private String title;
+    private TypesOfTasks typeTask;
     private String description;
     private int id;
     private Status status;
 
     public Task(String title, String description, int id, Status status) {
         this.title = title;
+        this.typeTask = typeTask;
         this.description = description;
         this.id = id;
         this.status = status;
@@ -22,8 +24,20 @@ public class Task {
         this.status = status;
     }
 
+    public Task() {
+
+    }
+
     public String getTitle() {
         return title;
+    }
+
+    public TypesOfTasks getTypeTask() {
+        return typeTask;
+    }
+
+    public void setTypeTask(TypesOfTasks typeTask) {
+        this.typeTask = typeTask;
     }
 
     public String getDescription() {
