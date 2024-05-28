@@ -6,7 +6,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,11 +17,8 @@ import static java.lang.Integer.parseInt;
 
 public class FileBackedTaskManager extends InMemoryTaskManager {
 
-    private static File file;
+    static String location = "data/test.csv";
 
-    public FileBackedTaskManager(File file) {
-        this.file = file;
-    }
 
     public FileBackedTaskManager() {
     }
@@ -28,7 +27,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
 
     public void save() throws ManagerSaveException {
         try {
-            Writer fileWriter = new FileWriter("data/test.csv");
+            Writer fileWriter = Files.newBufferedWriter(Paths.get(location), StandardCharsets.UTF_8);
             fileWriter.write("id,type,name,status,description,epic\n");
             for (Task task : getAllTask()) {
                 task.setTypeTask(TypesOfTasks.TASK);
@@ -53,20 +52,15 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
         }
     }
 
-
-    public static FileBackedTaskManager loadFromFile(File file) throws ManagerSaveException {
-        FileBackedTaskManager newFileBackedTasksManager = new FileBackedTaskManager(file);
+    public static FileBackedTaskManager loadFromFile(String location) throws ManagerSaveException {
+        FileBackedTaskManager newFileBackedTasksManager = new FileBackedTaskManager();
         try {
-            int shift = 3;
-            List<String> lines = Files.readAllLines(file.toPath());
+            List<String> lines = Files.readAllLines(Paths.get(location), StandardCharsets.UTF_8);
             if (lines.size() <= 1) {
                 newFileBackedTasksManager = null;
                 return newFileBackedTasksManager;
             }
-            if (!lines.get(lines.size() - 2).isEmpty()) {
-                shift = 1;
-            }
-            for (int i = 1; i <= lines.size() - shift; i++) {
+            for (int i = 1; i < lines.size(); i++) {
                 String[] parts = lines.get(i).split(", ");
                 switch (parts[1]) {
                     case ("TASK"):
@@ -127,10 +121,6 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
 
         }
         return newFileBackedTasksManager;
-    }
-
-    public FileBackedTaskManager(HistoryManager historyManager) {
-        super(historyManager);
     }
 
     @Override
@@ -257,6 +247,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                 + ", " + task.getDescription() + ", ";
     }
 
+
     public static void main(String[] args) {
 
         FileBackedTaskManager fileBackedTaskManager = new FileBackedTaskManager();
@@ -300,8 +291,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
             }
         }
         if (command == 2) {
-            FileBackedTaskManager fileBackedTaskManagerTest = loadFromFile(new File("data/test.csv"));
-
+            FileBackedTaskManager fileBackedTaskManagerTest = loadFromFile(location);
 
             System.out.println("ВОСТАНОВЛЕННЫ СПИСОК ВСЕХ ЗАДАЧ(Task)");
             for (Task t : fileBackedTaskManagerTest.getAllTask()) {
