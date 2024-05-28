@@ -85,6 +85,7 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
                         subTask.setTitle(parts[2]);
                         subTask.setStatus(Status.valueOf(parts[3]));
                         subTask.setEpicId(parseInt(parts[5]));
+                        newFileBackedTasksManager.epics.get(subTask.getEpicId()).getSubTaskIds().add(subTask.getEpicId());
                         newFileBackedTasksManager.subTasks.put(subTask.getId(), subTask);
                         break;
                     default:
