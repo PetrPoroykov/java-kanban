@@ -12,6 +12,10 @@ public class Epic extends Task {
         super(title, description, id, Status.NEW);
     }
 
+    public Epic() {
+
+    }
+
 
     public ArrayList<Integer> getSubTaskIds() {
         return subTaskIds;
@@ -20,6 +24,7 @@ public class Epic extends Task {
     public void setSubTaskIds(ArrayList<Integer> subTaskIds) {
         this.subTaskIds = subTaskIds;
     }
+
 
     @Override
     public boolean equals(Object o) {
