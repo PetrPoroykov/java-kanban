@@ -14,48 +14,56 @@ public class InMemoryTaskManagerTest extends TaskManagerTest<InMemoryTaskManager
 
 
     @DisplayName("Создание новой задачи")
+    @Override
     @Test
     public void shouldCreateTask() {
         super.shouldCreateTask();
     }
 
     @DisplayName("Обновление существующей задачи по валидному ID")
+    @Override
     @Test
     public void shouldUpdateTask() {
         super.shouldUpdateTask();
     }
 
     @DisplayName("Создание новой  сборной задачи")
+    @Override
     @Test
     public void shouldCreateEpic() {
         super.shouldCreateEpic();
     }
 
     @DisplayName("Обновление существующей сборной задачи по валидному ID")
+    @Override
     @Test
     public void shouldUpdataEpic() {
         super.shouldUpdataEpic();
     }
 
     @DisplayName("Создание новой  подзадачи")
+    @Override
     @Test
     public void shouldCreateSubTask() {
         super.shouldCreateSubTask();
     }
 
     @DisplayName("Обновление существующей  подзадачи по валидному ID")
+    @Override
     @Test
     public void shouldUpdataSubTask() {
         super.shouldUpdataSubTask();
     }
 
     @DisplayName("Обновление cтатуса эпика")
+    @Override
     @Test
     public void shouldUpdateEpicStatus() {
         super.shouldUpdateEpicStatus();
     }
 
     @DisplayName("Обновление времени эпика")
+    @Override
     @Test
     public void shouldUpdateEpicTime() {
         super.shouldUpdateEpicTime();
@@ -68,12 +76,14 @@ public class InMemoryTaskManagerTest extends TaskManagerTest<InMemoryTaskManager
     }
 
     @DisplayName("Задачи и подзадачи должны быть отсортированы по времени")
+    @Override
     @Test
     public void shouldGetPrioritizedTasks() {
         super.shouldGetPrioritizedTasks();
     }
 
     @DisplayName("Просмотренные задачи должны помещаться в историю просмотров")
+    @Override
     @Test
     public void viewedStoriesShouldFormBrowsingHistory() {
         super.viewedStoriesShouldFormBrowsingHistory();
