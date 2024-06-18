@@ -29,7 +29,6 @@ public class InMemoryHistoryManager implements HistoryManager {
         }
     }
 
-
     @Override
     public void removeView(int id) {
         if (listViewTasks.containsKey(id)) {

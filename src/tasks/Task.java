@@ -1,5 +1,7 @@
 package tasks;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 
@@ -9,10 +11,25 @@ public class Task {
     private String description;
     private int id;
     private Status status;
+    private LocalDateTime startTime = LocalDateTime.now();
+    private Duration duration = Duration.ZERO;
+
+    private LocalDateTime endTime = startTime.plus(duration);
+
+
+    public Task(String title, TypesOfTasks typeTask, String description, Status status, LocalDateTime startTime, Duration duration) {
+        this.title = title;
+        this.typeTask = typeTask;
+        this.description = description;
+        this.status = status;
+        this.startTime = startTime;
+        this.duration = duration;
+        this.endTime = startTime.plus(duration);
+
+    }
 
     public Task(String title, String description, int id, Status status) {
         this.title = title;
-        this.typeTask = typeTask;
         this.description = description;
         this.id = id;
         this.status = status;
@@ -25,7 +42,30 @@ public class Task {
     }
 
     public Task() {
+    }
 
+    public void setEndTime() {
+        this.endTime = this.startTime.plus(this.duration);
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+    }
+
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public LocalDateTime getEndTime() {
+        return endTime;
     }
 
     public String getTitle() {
@@ -62,6 +102,10 @@ public class Task {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
     }
 
     public void setStatus(Status status) {

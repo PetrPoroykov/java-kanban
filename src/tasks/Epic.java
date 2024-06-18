@@ -12,8 +12,11 @@ public class Epic extends Task {
         super(title, description, id, Status.NEW);
     }
 
-    public Epic() {
+    public Epic(String title, String description, Status status) {
+        super(title, description, status);
+    }
 
+    public Epic() {
     }
 
 
@@ -43,4 +46,6 @@ public class Epic extends Task {
     public String toString() {
         return super.toString() + " ВХОДЯТ ПОДЗАДАЧИ: " + subTaskIds.toString();
     }
+
+
 }

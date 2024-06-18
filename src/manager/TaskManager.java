@@ -51,5 +51,13 @@ public interface TaskManager {
 
     public SubTask getSubTask(int id);
 
-    public Epic getEpic(int id);
+    SubTask getSubTaskUtil(int id);
+
+    Epic getEpic(int id);
+
+    void updateEpicTime(Epic epic);
+
+    List<Task> getPrioritizedTasks();
+
+    void doVerificationTask(Task task);
 }
