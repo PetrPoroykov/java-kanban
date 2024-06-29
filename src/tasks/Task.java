@@ -11,10 +11,14 @@ public class Task {
     private String description;
     private int id;
     private Status status;
-    private LocalDateTime startTime = LocalDateTime.now();
+
+        private LocalDateTime startTime = LocalDateTime.now();
+//    private LocalDateTime startTime;
+
+
     private Duration duration = Duration.ZERO;
 
-    private LocalDateTime endTime = startTime.plus(duration);
+    private LocalDateTime endTime;
 
 
     public Task(String title, TypesOfTasks typeTask, String description, Status status, LocalDateTime startTime, Duration duration) {
@@ -24,16 +28,16 @@ public class Task {
         this.status = status;
         this.startTime = startTime;
         this.duration = duration;
-        this.endTime = startTime.plus(duration);
+//        this.endTime = startTime.plus(duration);
 
     }
 
-    public Task(String title, String description, int id, Status status) {
-        this.title = title;
-        this.description = description;
-        this.id = id;
-        this.status = status;
-    }
+//    public Task(String title, String description, int id, Status status) {
+//        this.title = title;
+//        this.description = description;
+//        this.id = id;
+//        this.status = status;
+//    }
 
     public Task(String title, String description, Status status) {
         this.title = title;
@@ -136,6 +140,9 @@ public class Task {
                 ", description='" + description + '\'' +
                 ", id=" + id +
                 ", status='" + status + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", duration='" + duration + '\'' +
+                ", endTime='" + endTime + '\'' +
                 '}';
     }
 }
