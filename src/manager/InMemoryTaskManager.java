@@ -268,6 +268,7 @@ public class InMemoryTaskManager implements TaskManager {
                 if (actualSubTask.getStartTime() != null) {
                     if (actualSubTask.getStartTime().isBefore(firstSubTaskStart))
                         firstSubTaskStart = actualSubTask.getStartTime();
+                    actualSubTask.setEndTime();
                     if (actualSubTask.getEndTime().isAfter(lastSubTaskEnd)) {
                         lastSubTaskEnd = actualSubTask.getEndTime();
                     }
