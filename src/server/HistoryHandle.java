@@ -3,6 +3,7 @@ package server;
 import com.sun.net.httpserver.HttpExchange;
 
 import java.io.IOException;
+
 public class HistoryHandle extends BaseHttpHandler {
 
     @Override
