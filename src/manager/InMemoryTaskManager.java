@@ -85,7 +85,7 @@ public class InMemoryTaskManager implements TaskManager {
                 Epic ep = epics.get(subTasks.get(subTask.getId()).getEpicId());
                 System.out.println("список подзадач1 ДО :" + ep.getSubTaskIds());
                 for (int i = 0; i < ep.getSubTaskIds().size(); i++) {
-                    if (ep.getSubTaskIds().get(i) == subTask.getId()){
+                    if (ep.getSubTaskIds().get(i) == subTask.getId()) {
                         ep.getSubTaskIds().remove(i);
                     }
                 }
