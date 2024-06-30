@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-public class BaseHttpHandler implements HttpHandler {
+public abstract class BaseHttpHandler implements HttpHandler {
 
     protected static void send(HttpExchange h, String text, int cod) throws IOException {
         byte[] resp = text.getBytes(UTF_8);
@@ -27,10 +27,5 @@ public class BaseHttpHandler implements HttpHandler {
         } catch (NumberFormatException exception) {
             return -1;
         }
-    }
-
-    @Override
-    public void handle(HttpExchange httpExchange) throws IOException {
-
     }
 }

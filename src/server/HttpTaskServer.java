@@ -1,6 +1,7 @@
 package server;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.sun.net.httpserver.HttpServer;
 import manager.Managers;
 import manager.TaskManager;
@@ -19,7 +20,7 @@ public class HttpTaskServer {
 
     public HttpTaskServer() throws IOException {
         taskManager = Managers.getDefault();
-        gson = Managers.getGeson();
+        gson = getGeson();
         server = HttpServer.create(new InetSocketAddress("localhost", PORT), 0);
         server.createContext("/tasks", new TaskHandle());
         server.createContext("/subtasks", new SubTaskHandle());
@@ -83,5 +84,12 @@ public class HttpTaskServer {
 
     public static Gson getGson() {
         return gson;
+    }
+
+    public static Gson getGeson() {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter());
+        gsonBuilder.registerTypeAdapter(Duration.class, new DurationAdapter());
+        return gsonBuilder.create();
     }
 }
