@@ -1,13 +1,10 @@
-import manager.Managers;
-import manager.TaskManager;
-
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("Поехали!");
 
 
-        TaskManager inMemoryTaskManager = Managers.getDefault();
+//        TaskManager inMemoryTaskManager = Managers.getDefault();
 
 //        TaskManager inMemoryTaskManager = new InMemoryTaskManager(new InMemoryHistoryManager());
 
